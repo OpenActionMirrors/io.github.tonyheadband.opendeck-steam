@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+pnpm build
+
+plugin=io.github.tonyheadband.opendeck-steam.sdPlugin
+version=$(node -p "require('./package.json').version")
+zip_path="dist/opendeck-steam-$version.zip"
+
+mkdir -p dist
+rm -f "$zip_path"
+zip -qr "$zip_path" "$plugin" -x "$plugin/logs/*" "*.map"
+echo "Packaged $zip_path"

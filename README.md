@@ -37,6 +37,12 @@ offline. The last key is the white flash frame shown for about six seconds when 
 
 ## Install
 
+Download `opendeck-steam-<version>.zip` from the [latest release](https://github.com/TonyHeadband/opendeck-steam-plugin/releases/latest),
+unzip it into `~/.config/opendeck/plugins/` so that `io.github.tonyheadband.opendeck-steam.sdPlugin` sits there, and
+restart OpenDeck. The keys appear in the **Steam** category.
+
+To build from source instead:
+
 ```bash
 git clone https://github.com/TonyHeadband/opendeck-steam-plugin
 cd opendeck-steam-plugin
@@ -44,9 +50,8 @@ pnpm install
 scripts/install
 ```
 
-Then restart OpenDeck. The keys appear in the **Steam** category. `scripts/install` copies the built plugin
-into `~/.config/opendeck/plugins/` (a symlink does not work, OpenDeck refuses to serve its settings panels
-through one).
+`scripts/install` copies the built plugin into `~/.config/opendeck/plugins/` (a symlink does not work, OpenDeck
+refuses to serve its settings panels through one). `scripts/package` builds the release zip in `dist/`.
 
 ## Setting up the keys
 
