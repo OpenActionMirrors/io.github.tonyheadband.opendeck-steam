@@ -29,7 +29,10 @@ const loadIcon = createIconLoader(new URL("../imgs/", import.meta.url));
 
 const deps = {
   loadIcon,
-  open: createToggleOpener(xdgOpen, createWmctrl(), streamDeck.logger),
+  open: createToggleOpener(xdgOpen, createWmctrl(), streamDeck.logger, (steamId) => {
+    const update = poller.latest(steamId);
+    return update?.kind === "view" ? update.view.name : undefined;
+  }),
   logger: streamDeck.logger,
 };
 

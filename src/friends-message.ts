@@ -23,8 +23,10 @@ export async function buildFriendsMessage(options: {
     return { event: "friends", hasKey: true, me: null, friends: [], error: "Could not read your Steam account" };
   }
 
+  let loadingFriendList = true;
   try {
     const ids = await options.api.getFriendIds(account.steamId);
+    loadingFriendList = false;
     const summaries = new Map((await options.api.getSummaries([account.steamId, ...ids])).map((summary) => [summary.steamId, summary]));
 
     const friends = ids
@@ -40,7 +42,14 @@ export async function buildFriendsMessage(options: {
     return { event: "friends", hasKey: true, me: { steamId: account.steamId, name: own?.name || account.name }, friends };
   } catch (error) {
     options.logger.error("Could not load friends", error);
+    // Steam answers 401 for a private friends list, so only a 403 or a failing summaries call means a bad key.
+    const privateList = loadingFriendList && error instanceof SteamApiError && error.status === 401;
     const rejected = error instanceof SteamApiError && (error.status === 401 || error.status === 403);
-    return { event: "friends", hasKey: true, me, friends: [], error: rejected ? "Steam rejected this API key" : "Could not load friends" };
+    const message = privateList
+      ? "Steam refused the friend list: set your Friends List to Public, or check the API key"
+      : rejected
+        ? "Steam rejected this API key"
+        : "Could not load friends";
+    return { event: "friends", hasKey: true, me, friends: [], error: message };
   }
 }

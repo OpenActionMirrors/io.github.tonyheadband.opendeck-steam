@@ -127,7 +127,7 @@ async function run<V>(
   const resolution = spec.resolve(settings ?? {});
 
   if (resolution.kind === "invalid") {
-    deps.logger.error(`Invalid ${resolution.setting} setting: ${JSON.stringify(resolution.raw)}`);
+    deps.logger.error(`Invalid ${resolution.setting} setting: ${JSON.stringify(resolution.raw)?.slice(0, 100)}`);
     await alert();
     return;
   }

@@ -65,6 +65,28 @@ describe("buildFriendsMessage", () => {
     expect(message.friends).toEqual([{ steamId: A, name: `Friend ${A}`, state: "offline" }]);
   });
 
+  it("points at a private friends list when the friend list call answers 401", async () => {
+    const api = {
+      getFriendIds: async (): Promise<string[]> => {
+        throw new SteamApiError(401, "Steam API returned HTTP 401");
+      },
+      getSummaries: async () => [],
+    };
+    const message = await buildFriendsMessage({ api, own, logger });
+    expect(message.error).toContain("Friends List to Public");
+  });
+
+  it("still reports a rejected key when the summaries call answers 401", async () => {
+    const api = {
+      getFriendIds: async () => [A],
+      getSummaries: async (): Promise<PlayerSummary[]> => {
+        throw new SteamApiError(401, "Steam API returned HTTP 401");
+      },
+    };
+    const message = await buildFriendsMessage({ api, own, logger });
+    expect(message.error).toBe("Steam rejected this API key");
+  });
+
   it("returns a fixed error string and logs when the API rejects the key", async () => {
     logger.error.mockClear();
     const api = {

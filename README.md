@@ -19,7 +19,7 @@ The games and friends shown are made up.
 | **Steam Status** | Sets your chat status: Online, Away, Invisible or Offline. |
 | **Open Steam View** | Opens Library, Friends, Downloads, Account or Settings. Pressing it again closes that window. |
 | **Launch Steam Game** | Shows an installed game's art and launches it. Choose cover, header or logo art, and an image size of 20–100% to leave a border. A green ring shows while the game is running. |
-| **Steam Friend** | Shows a friend's avatar with a ring in their status colour (in game, online, busy, away, offline). Pressing it opens a chat. The key can flash for about six seconds when the friend comes online. |
+| **Steam Friend** | Shows a friend's avatar with a ring in their status colour (in game, online, busy, away, offline). Pressing it opens a chat, and pressing it again closes that chat window. The key can flash for about six seconds when the friend comes online. |
 
 ### Friend key states
 
@@ -33,6 +33,10 @@ offline. The last key is the white flash frame shown for about six seconds when 
 - Linux with [OpenDeck](https://github.com/ninjadev64/OpenDeck) and the Steam client (native install under `~/.local/share/Steam` or `~/.steam/steam`)
 - Node.js 20 or newer (OpenDeck runs the plugin with it) and `xdg-open`
 - `wmctrl` for the open/close toggle on the view keys (optional; without it the keys just open the view)
+- English-language Steam: the open/close toggle matches the window titles "Friends List" and "Steam". Other
+  languages still open the views but never close them.
+- Not supported or untested: Flatpak Steam and Flatpak OpenDeck (the plugin needs host access to `xdg-open`,
+  `wmctrl`, `/proc` and `~/.local/share/Steam`)
 - A [Steam Web API key](https://steamcommunity.com/dev/apikey) for the Steam Friend key only
 
 ## Install
@@ -59,7 +63,8 @@ Drag a key from the **Steam** category onto your deck, then click it to open its
 
 - **Steam Status:** pick **Status** (Online, Away, Invisible or Offline). Pressing the key sets that chat status.
 - **Open Steam View:** pick **View** (Library, Account, Downloads, Friends or Settings). Pressing the key opens that
-  view in Steam; pressing it again closes the window.
+  view in Steam; pressing the same key again closes the window.
+  The views other than Friends share Steam's main window, so pressing a different one navigates there instead of closing it.
 - **Launch Steam Game:**
   - **Game:** every game Steam has installed, most recently played first. A game you uninstalled later stays
     selectable and still launches (Steam offers to install it).
@@ -73,7 +78,9 @@ Drag a key from the **Steam** category onto your deck, then click it to open its
   3. Tick or untick **Flash when this friend comes online** (on by default).
 
 Presence is read every minute from the Steam Web API, so the Friend key is only as fresh as that. Friends with
-non-public profiles can read as offline even when they are online; that is a Steam API limit.
+non-public profiles can read as offline even when they are online; that is a Steam API limit. Your own Friends
+List must also be set to **Public** in Steam's privacy settings, or the API refuses to list your friends and the
+dropdown stays empty.
 
 The API key is stored in plain text in OpenDeck's plugin settings under `~/.config/opendeck`. It is sent
 only to `api.steampowered.com`; avatars are fetched only from Steam's image hosts. The plugin never logs the

@@ -11,7 +11,6 @@ Run after `scripts/install` and an OpenDeck restart. Each item must pass.
 7. Quit and restart OpenDeck. Both keys keep their icons and settings.
 8. Quit Steam, press a key. Steam launches or the key flashes an alert; OpenDeck stays up.
 9. Check `~/.local/share/opendeck/logs/plugins/io.github.tonyheadband.opendeck-steam.sdPlugin.log` and `io.github.tonyheadband.opendeck-steam.sdPlugin/logs/` have no errors.
-10. Remove the old Steam Status Update keys once the new ones work.
 
 ## Launch Steam Game (M2)
 
@@ -30,7 +29,7 @@ Run after `scripts/install` and an OpenDeck restart. Each item must pass.
 20. Drag it to a key. The key shows "?" and pressing it flashes an alert.
 21. Open its settings panel. It says "Enter your Steam Web API key". Paste your key into the field and press Save key. The field empties, the status reads "API key saved", and the key itself is never shown again.
 22. The Friend dropdown lists "Me (...)" first, then online and in-game friends, then the rest, each with a state. Choose a friend: within about a minute the key shows their avatar in a ring (blue online, green in game, amber away, red busy, dimmed grey offline).
-23. Press the key. A Steam chat with that friend opens.
+23. Press the key. A Steam chat with that friend opens. Press it again: that chat window closes (it is matched by the friend's name, so it needs the friend loaded from the API; without that it just opens).
 24. Restart OpenDeck. The key keeps its friend and shows their state again within about a minute; the panel still says the key is saved.
 25. Clear key in the panel. The key goes back to "?" within a minute; pressing it still opens the chat (no API key needed). Saving a key restores the avatar and ring.
     Friends with non-public profiles may read as offline even when online (a Steam API limit).
@@ -50,7 +49,7 @@ Run after `scripts/install` and an OpenDeck restart. Each item must pass.
 33. Open Steam View set to Friends: with the friends list closed, pressing it opens the list.
 34. Press it again with the list open: the list window closes. Press once more: it opens again.
 35. With Steam running but no friends list, and with `wmctrl` temporarily renamed (or Steam closed): pressing still opens the list or starts Steam, and the key does not flash an alert.
-36. The other views (Library, Account, Downloads, Settings) toggle the main Steam window: the first press opens that page, a second press closes the main window. Launch, status and friend keys never close anything.
+36. The other views (Library, Account, Downloads, Settings) toggle the main Steam window: the first press opens that page, pressing the same key again closes the main window, while pressing a different view navigates the open window. Launch, status and friend keys never close anything.
 
 ## Running ring (M4)
 
