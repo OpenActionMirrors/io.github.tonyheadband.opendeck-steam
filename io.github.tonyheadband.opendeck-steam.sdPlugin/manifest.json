@@ -1,0 +1,53 @@
+{
+  "Name": "Steam Dashboard Controller",
+  "Version": "0.1.0.0",
+  "Author": "Antonio Frontino",
+  "Description": "Steam status, navigation, game launch and friend presence keys for OpenDeck on Linux",
+  "Category": "Steam",
+  "CategoryIcon": "imgs/plugin/category-icon",
+  "Icon": "imgs/plugin/icon",
+  "CodePath": "bin/plugin.js",
+  "SDKVersion": 2,
+  "Software": { "MinimumVersion": "7.1" },
+  "OS": [{ "Platform": "linux", "MinimumVersion": "1" }],
+  "Nodejs": { "Version": "20" },
+  "UUID": "io.github.tonyheadband.opendeck-steam",
+  "Actions": [
+    {
+      "Name": "Steam Status",
+      "UUID": "io.github.tonyheadband.opendeck-steam.status",
+      "Icon": "imgs/actions/status/online",
+      "Tooltip": "Set your Steam chat status",
+      "PropertyInspectorPath": "ui/status.html",
+      "Controllers": ["Keypad"],
+      "States": [{ "Image": "imgs/actions/status/online", "TitleAlignment": "middle" }]
+    },
+    {
+      "Name": "Open Steam View",
+      "UUID": "io.github.tonyheadband.opendeck-steam.openview",
+      "Icon": "imgs/actions/openview/games",
+      "Tooltip": "Open a view in the Steam client",
+      "PropertyInspectorPath": "ui/openview.html",
+      "Controllers": ["Keypad"],
+      "States": [{ "Image": "imgs/actions/openview/games", "TitleAlignment": "middle" }]
+    },
+    {
+      "Name": "Launch Steam Game",
+      "UUID": "io.github.tonyheadband.opendeck-steam.launch",
+      "Icon": "imgs/actions/launch/generic",
+      "Tooltip": "Launch an installed Steam game",
+      "PropertyInspectorPath": "ui/launch.html",
+      "Controllers": ["Keypad"],
+      "States": [{ "Image": "imgs/actions/launch/generic", "TitleAlignment": "middle" }]
+    },
+    {
+      "Name": "Steam Friend",
+      "UUID": "io.github.tonyheadband.opendeck-steam.friend",
+      "Icon": "imgs/actions/friend/placeholder",
+      "Tooltip": "Show a friend's Steam status; press to chat",
+      "PropertyInspectorPath": "ui/friend.html",
+      "Controllers": ["Keypad"],
+      "States": [{ "Image": "imgs/actions/friend/placeholder", "TitleAlignment": "middle" }]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+node_modules/
+*.sdPlugin/bin/
+.superpowers/
+*.sdPlugin/logs/
+.env
+.env.*

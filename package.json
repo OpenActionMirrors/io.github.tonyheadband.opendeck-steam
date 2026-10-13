@@ -1,0 +1,26 @@
+{
+  "name": "opendeck-steam-plugin",
+  "private": true,
+  "license": "MIT",
+  "author": "Antonio Frontino",
+  "repository": "github:TonyHeadband/opendeck-steam-plugin",
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "eslint src tests scripts io.github.tonyheadband.opendeck-steam.sdPlugin/ui",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@elgato/streamdeck": "3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.12.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.4"
+  }
+}

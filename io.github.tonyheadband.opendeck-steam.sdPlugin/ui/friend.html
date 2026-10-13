@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Steam Friend</title>
+    <style>
+      body { margin: 0; padding: 12px; font: 13px sans-serif; color: #d8d8d8; }
+      label { display: block; margin: 10px 0 6px; }
+      input, select { width: 100%; padding: 4px; box-sizing: border-box; }
+      .row { display: flex; gap: 6px; margin-top: 6px; }
+      .row button { flex: 1; padding: 4px; }
+      .check { display: flex; align-items: center; gap: 6px; margin-top: 10px; }
+      .check input { width: auto; }
+      #keyStatus { margin-top: 6px; color: #9aa0a6; }
+      #note { margin-top: 10px; color: #f5a623; }
+    </style>
+  </head>
+  <body>
+    <label for="apiKey">Steam Web API key</label>
+    <input id="apiKey" type="password" autocomplete="off" spellcheck="false" />
+    <div class="row">
+      <button id="saveKey" type="button">Save key</button>
+      <button id="clearKey" type="button">Clear key</button>
+    </div>
+    <div id="keyStatus"></div>
+
+    <label for="friend">Friend</label>
+    <select id="friend"></select>
+    <label class="check"><input id="flash" type="checkbox" checked /> Flash when this friend comes online</label>
+
+    <div id="note"></div>
+    <script src="friend.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Open Steam View</title>
+    <style>
+      body { margin: 0; padding: 12px; font: 13px sans-serif; color: #d8d8d8; }
+      label { display: block; margin-bottom: 6px; }
+      select { width: 100%; padding: 4px; }
+    </style>
+  </head>
+  <body>
+    <label for="value">View</label>
+    <select id="value" data-setting="openview">
+      <option value="games">Library</option>
+      <option value="account">Account</option>
+      <option value="downloads">Downloads</option>
+      <option value="friends">Friends</option>
+      <option value="settings">Settings</option>
+    </select>
+    <script src="pi.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+pnpm build
+
+plugin=io.github.tonyheadband.opendeck-steam.sdPlugin
+plugins="$HOME/.config/opendeck/plugins"
+target="$plugins/$plugin"
+
+# A symlink does not work: OpenDeck serves property inspectors only from files whose
+# resolved path stays inside its config directory, and answers 403 otherwise.
+mkdir -p "$plugins"
+[ -L "$target" ] && rm "$target"
+rsync -a --delete --exclude logs/ "$plugin/" "$target/"
+echo "Installed $plugin -> $target"
