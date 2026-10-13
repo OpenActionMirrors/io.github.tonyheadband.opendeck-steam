@@ -1,6 +1,7 @@
 {
   "name": "opendeck-steam-plugin",
   "private": true,
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Antonio Frontino",
   "repository": "github:TonyHeadband/opendeck-steam-plugin",

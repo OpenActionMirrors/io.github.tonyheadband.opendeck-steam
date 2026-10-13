@@ -1,6 +1,6 @@
 {
   "Name": "Steam Dashboard Controller",
-  "Version": "0.1.0.0",
+  "Version": "1.0.0.0",
   "Author": "Antonio Frontino",
   "Description": "Steam status, navigation, game launch and friend presence keys for OpenDeck on Linux",
   "Category": "Steam",
